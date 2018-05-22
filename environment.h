@@ -24,7 +24,7 @@ class Environment {
         
     private:
         std::vector<State> states; // possible states
-        std::vector<Action> action; // possible actions
+        std::vector<Action> actions; // possible actions
         State active_state; 
         State previous_state;
         Reward current_reward;
