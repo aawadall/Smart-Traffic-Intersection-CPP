@@ -10,7 +10,7 @@
 
 class Agent {
   public:
-    Agent();
+    Agent(std::vector<Action>);
     ~Agent();
     bool Learn(State initial_state, 
                State resulting_state, 
@@ -18,6 +18,9 @@ class Agent {
                Reward reward);
                
     Action GetNextMove(State);
+    
+    private:
+      std::vector<Action> actions; // possible actions
 };
 
 #endif // AGENT

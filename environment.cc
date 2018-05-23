@@ -1,7 +1,7 @@
 #include "environment.h"
 #include <cstdlib>
 #include <ctime>
-
+#include <random>
 // Mock Constructor/destructor 
 Environment::Environment() : states{0, 1, 2, 3, 4},
                              actions{0, 1, 2} {
@@ -16,12 +16,22 @@ State Environment::GetCurrentState() {
 
 SimulationSignal Environment::Simulate(Action action) {
     // Stub, to be replaced with real simulation engine 
-    srand(time(0)); // initialize random number seed
+    static std::default_random_engine engine{static_cast<unsigned int>(time(0))};
+    /* TODO: Figure out how to extract first and last states
+    std::vector<Action>::iterator start{states.begin()};
+    std::vector<Action>::iterator end{states.end()};
+    int idx1{std::distance( states.begin(), start )};
+    int idx2{std::distance( states.end(), end )};
+    */
+    std::uniform_int_distribution<unsigned int> randomStates{0, 4};
+    std::uniform_real_distribution<double> genericRand{-5 , 5};
+                                                            
+   
     SimulationSignal result;
     previous_state = active_state;
-    active_state = static_cast<State>(rand()% states.size());
-    current_reward = static_cast<double>(rand() % 1000) / 1000 - 0.5; 
-                                                // simulating +/- 0.5 
+    active_state = static_cast<State>(randomStates(engine));
+    current_reward = static_cast<Reward>(genericRand(engine)); 
+                     
     result.next_state = active_state;
     result.reward = current_reward;
     

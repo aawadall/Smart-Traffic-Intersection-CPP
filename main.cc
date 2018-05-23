@@ -15,7 +15,7 @@ int main() {
     
     Action current_action{0};
     State current_state{0};
-    for(unsigned int idx{0}; idx < 3; idx++) {
+    for(unsigned int idx{0}; idx < 5; idx++) {
         current_state = env.GetCurrentState();
         current_action = agent.GetNextMove(current_state);
         

@@ -1,8 +1,13 @@
-all: hello-cpp-world hello-c-world
+all: simulate
 
-%: %.cc
-	g++ -std=c++11 $< -o $@
+simulate: main.o environment.o agent.o
+	g++ main.o environment.o agent.o -o simulate
 
-%: %.c
-	gcc $< -o $@
+environment.o: environment.cc
+	g++ -std=c++11 -c environment.cc
 
+agent.o: agent.cc
+	g++ -std=c++11 -c agent.cc
+
+main.o: main.cc
+	g++ -std=c++11 -c main.cc
