@@ -37,3 +37,5 @@ SimulationSignal Environment::Simulate(Action action) {
     
     return result;
 }
+
+// TODO : Add Random Number Generator here to be a static method 

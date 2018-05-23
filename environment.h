@@ -23,6 +23,7 @@ class Environment {
         SimulationSignal Simulate(Action);
         
     private:
+        // TODO: ADD Random Number Generator as a static method 
         std::vector<State> states; // possible states
         std::vector<Action> actions; // possible actions
         State active_state; 
