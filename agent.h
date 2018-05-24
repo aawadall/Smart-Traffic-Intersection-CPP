@@ -20,7 +20,7 @@ class Agent {
                
     Action GetNextMove(State);
     std::string GetType();
-    private:
+    protected:
       std::vector<Action> actions; // possible actions
       std::string type; // Stores Agent Type
 };

@@ -28,5 +28,5 @@ Action Agent::GetNextMove(State state) {
 }
 
 std::string Agent::GetType() {
-    return type;
+    return type; // Agent Type
 }

@@ -5,12 +5,12 @@ QAgent::QAgent(std::vector<State> states, std::vector<Action> actions) :
                             learning_rate{0.3},
                             discount_rate{0.9},
                             exploration_rate{0.001},
-                            agent(actions)
+                            Agent(actions)
 {
     // TODO - Construct Q-Matrix
 }
 
-QAgent::~QAgent) {
+QAgent::~QAgent()) {
     // TODO
 } 
 
