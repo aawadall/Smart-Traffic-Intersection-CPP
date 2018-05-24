@@ -10,8 +10,8 @@ QAgent::QAgent(std::vector<State> states, std::vector<Action> actions) :
                             Agent(actions)
 {
     SetType("Q-Learning");
-    // TODO - Construct Q-Matrix
-    double default_value{0.0f};
+    // Construct Q-Matrix
+    double default_value{1.0f};
     Q.resize(states.size()); // Set height 
     for(unsigned int idx{0}; idx < states.size(); idx++) // Set Width
         Q[idx].resize(actions.size(), default_value);

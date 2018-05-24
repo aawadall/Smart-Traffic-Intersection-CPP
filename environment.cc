@@ -4,7 +4,8 @@
 #include <random>
 // Mock Constructor/destructor 
 Environment::Environment() : states{0, 1, 2, 3, 4},
-                             actions{0, 1, 2} {
+                             actions{0, 1, 2},
+                             active_state{0} {
     
 }
 Environment::~Environment() {
@@ -24,16 +25,16 @@ SimulationSignal Environment::Simulate(Action action) {
     int idx2{std::distance( states.end(), end )};
     */
     std::uniform_int_distribution<unsigned int> randomStates{0, 4};
-    std::uniform_real_distribution<double> genericRand{-5 , 5};
+    std::uniform_real_distribution<double> genericRand{-1 , 1};
                                                             
    
     SimulationSignal result;
     previous_state = active_state;
-    active_state = static_cast<State>(randomStates(engine));
+    
     current_reward = static_cast<Reward>(genericRand(engine)) 
-            + static_cast<int>(active_state) == static_cast<int>(action) ? 
-                            1.0 : -0.1 ; 
-                     
+            * static_cast<int>(active_state) == static_cast<int>(action) ? 
+                            5.0 : 0.2 ; 
+    active_state = static_cast<State>(randomStates(engine));                 
     result.next_state = active_state;
     result.reward = current_reward;
     
