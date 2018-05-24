@@ -16,14 +16,9 @@ class Agent {
     virtual bool Learn(State initial_state, 
                State resulting_state, 
                Action applied_action, 
-               Reward reward) {return true;}
+               Reward reward);
                
-    virtual Action GetNextMove(State state)  {
-        // TODO
-        // Naive Agent
-        srand(time(0)); // initialize random number seed
-        return static_cast<Action>(rand() % actions.size());
-    }
+    virtual Action GetNextMove(State state);
     
     std::string GetType();
     protected:

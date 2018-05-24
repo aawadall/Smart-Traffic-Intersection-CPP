@@ -20,3 +20,15 @@ std::string Agent::GetType() {
 void Agent::SetType(std::string newType) {
     type = newType;
 }
+
+bool Agent::Learn(State initial_state, 
+               State resulting_state, 
+               Action applied_action, 
+               Reward reward) {return true;}
+               
+Action Agent::GetNextMove(State state)  {
+        // TODO
+        // Naive Agent
+        srand(time(0)); // initialize random number seed
+        return static_cast<Action>(rand() % actions.size());
+    }
