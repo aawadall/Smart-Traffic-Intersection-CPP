@@ -21,7 +21,8 @@ class Environment {
         ~Environment();
         State GetCurrentState();
         SimulationSignal Simulate(Action);
-        
+        std::vector<Action> GetActions() { return actions;}
+        std::vector<State> GetStates() { return states;}
     private:
         // TODO: ADD Random Number Generator as a static method 
         std::vector<State> states; // possible states

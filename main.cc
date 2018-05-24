@@ -1,15 +1,21 @@
 
 #include "environment.h"
 #include "agent.h"
-
+#include "q-agent.h"
 #include <iostream>
 #include <iomanip>
 
+using namespace std;
 
 int main() {
+    cout << "Starting Simulator!!" << endl;
     Environment env;
-    std::vector<Action> actions{0, 1, 2};
-    Agent agent(actions);
+    
+    Agent agent(env.GetActions());
+    cout << "Created New Agent : " << agent.GetType() << endl;
+    
+    QAgent q_agent(env.GetStates(), env.GetActions());
+    cout << "Created New Agent : " << q_agent.GetType() << endl;
     
     SimulationSignal result;
     
@@ -22,12 +28,30 @@ int main() {
         std::cout << "Simulation: " << idx << std::endl;
         std::cout << "Current Action: " << current_action
                   << " On state : " << current_state << std::endl;
-        
         result = env.Simulate(current_action);
+        // Invoke Training           
+        agent.Learn(current_state, result.next_state, current_action, result.reward);
+        
+        
         
         std::cout << "New State : " << result.next_state
                   << " Reward : "   << result.reward
                   << std::endl;
+        current_state = env.GetCurrentState();
+        current_action = q_agent.GetNextMove(current_state);
+        
+        std::cout << "Simulation: " << idx << std::endl;
+        std::cout << "Current Action: " << current_action
+                  << " On state : " << current_state << std::endl;
+        
+        result = env.Simulate(current_action);
+        // Invoke Training           
+        q_agent.Learn(current_state, result.next_state, current_action, result.reward);
+        
+        std::cout << "New State : " << result.next_state
+                  << " Reward : "   << result.reward
+                  << std::endl;
+                  
     }
     return 0;
 }

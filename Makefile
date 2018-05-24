@@ -6,11 +6,11 @@ simulate: main.o environment.o agent.o q-agent.o
 main.o: main.cc
 	g++ -std=c++11 -c main.cc
 
-environment.o: environment.cc
+environment.o: environment.cc environment.h
 	g++ -std=c++11 -c environment.cc
 
-agent.o: agent.cc
-	g++ -std=c++11 -c agent.cc
+agent.o: agent.cc agent.h
+	g++ -std=c++11 -c agent.cc 
 
-q-agent.o: q-agent.cc
+q-agent.o: q-agent.cc q-agent.h
 	g++ -std=c++11 -c q-agent.cc

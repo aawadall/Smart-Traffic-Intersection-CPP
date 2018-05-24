@@ -12,7 +12,11 @@ class QAgent : public Agent
     public:
         QAgent(std::vector<State> states, std::vector<Action> actions);
         ~QAgent();
-
+        bool Learn(State initial_state, 
+                  State resulting_state, 
+                  Action applied_action, 
+                  Reward reward);
+        Action GetNextMove(State state);
     private:
         std::vector<std::vector<double>> Q; //Q-Matrix; State/Action value pair
         double learning_rate;

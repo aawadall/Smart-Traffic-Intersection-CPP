@@ -13,16 +13,23 @@ class Agent {
   public:
     Agent(std::vector<Action>);
     ~Agent();
-    bool Learn(State initial_state, 
+    virtual bool Learn(State initial_state, 
                State resulting_state, 
                Action applied_action, 
-               Reward reward);
+               Reward reward) {return true;}
                
-    Action GetNextMove(State);
+    virtual Action GetNextMove(State state)  {
+        // TODO
+        // Naive Agent
+        srand(time(0)); // initialize random number seed
+        return static_cast<Action>(rand() % actions.size());
+    }
+    
     std::string GetType();
     protected:
       std::vector<Action> actions; // possible actions
       std::string type; // Stores Agent Type
+      void SetType(std::string);
 };
 
 #endif // AGENT
