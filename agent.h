@@ -7,6 +7,7 @@
 
 #include "environment.h"
 #include <vector>
+#include <string>
 
 class Agent {
   public:
@@ -18,9 +19,10 @@ class Agent {
                Reward reward);
                
     Action GetNextMove(State);
-    
+    std::string GetType();
     private:
       std::vector<Action> actions; // possible actions
+      std::string type; // Stores Agent Type
 };
 
 #endif // AGENT
