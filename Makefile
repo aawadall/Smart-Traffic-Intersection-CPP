@@ -1,7 +1,7 @@
 all: simulate
 
 simulate: main.o environment.o agent.o
-	g++ main.o environment.o agent.o -o simulate
+	g++ main.o environment.o agent.o -o bin/simulate
 
 environment.o: environment.cc
 	g++ -std=c++11 -c environment.cc
