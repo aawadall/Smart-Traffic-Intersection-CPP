@@ -30,7 +30,9 @@ SimulationSignal Environment::Simulate(Action action) {
     SimulationSignal result;
     previous_state = active_state;
     active_state = static_cast<State>(randomStates(engine));
-    current_reward = static_cast<Reward>(genericRand(engine)); 
+    current_reward = static_cast<Reward>(genericRand(engine)) 
+            + static_cast<int>(active_state) == static_cast<int>(action) ? 
+                            1.0 : -0.1 ; 
                      
     result.next_state = active_state;
     result.reward = current_reward;

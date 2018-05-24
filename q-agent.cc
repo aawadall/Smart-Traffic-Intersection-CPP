@@ -40,9 +40,10 @@ bool QAgent::Learn(State initial_state,
 }
                   
 Action QAgent::GetNextMove(State state) {
-    // TODO - return best action in state row or explore
-    srand(time(0)); // initialize random number seed
-    return static_cast<Action>(rand() % actions.size());
+  std::vector<double>::iterator q_max{std::max_element(Q[state].begin(),
+                                                       Q[state].end())};
+  Action best_move{std::distance(Q[state].begin(), q_max)};
+  return best_move;
 }
 
 void QAgent::PrintQ() {
@@ -50,12 +51,12 @@ void QAgent::PrintQ() {
                  action_space{Q[0].size()};
         
     std::cout << "Printing Q Matrix Values " << std::endl;
-    for (unsigned int idx{0}; idx < state_space; idx++) {
+    for (auto state_row : Q) {
         std::cout << std::endl;
-        for(unsigned int jdx{0}; jdx < action_space; jdx++) {
-            std::cout << std::setw(6) 
+        for(auto action_value : state_row) {
+            std::cout << std::setw(8) 
                       << std::setprecision(3) 
-                      << Q[idx][jdx];
+                      << action_value;
         }
     }
     std::cout << std::endl;
