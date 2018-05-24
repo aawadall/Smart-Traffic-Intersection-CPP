@@ -21,7 +21,8 @@ int main() {
     
     Action current_action{0};
     State current_state{0};
-    for(unsigned int idx{0}; idx < 5; idx++) {
+    for(unsigned int idx{0}; idx < 15; idx++) {
+        /*
         current_state = env.GetCurrentState();
         current_action = agent.GetNextMove(current_state);
         
@@ -31,7 +32,7 @@ int main() {
         result = env.Simulate(current_action);
         // Invoke Training           
         agent.Learn(current_state, result.next_state, current_action, result.reward);
-        
+        */
         
         
         std::cout << "New State : " << result.next_state
@@ -51,7 +52,8 @@ int main() {
         std::cout << "New State : " << result.next_state
                   << " Reward : "   << result.reward
                   << std::endl;
-                  
+        
+        q_agent.PrintQ();
     }
     return 0;
 }

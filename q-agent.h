@@ -17,6 +17,7 @@ class QAgent : public Agent
                   Action applied_action, 
                   Reward reward);
         Action GetNextMove(State state);
+        void PrintQ(); // Displays Q Matrix Values
     private:
         std::vector<std::vector<double>> Q; //Q-Matrix; State/Action value pair
         double learning_rate;
