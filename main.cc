@@ -23,7 +23,7 @@ int main() {
     State current_state{0};
     cout << "State PAckage.." << endl;
 
-    for(unsigned int idx{0}; idx < 99999; idx++) {
+    for(unsigned int idx{0}; idx < 9999; idx++) {
         cout << "Experiment # " << idx << endl;   
         current_state = env.GetCurrentState();
 

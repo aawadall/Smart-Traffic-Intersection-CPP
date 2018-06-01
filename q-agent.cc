@@ -4,14 +4,14 @@
 #include <iomanip>
 
 QAgent::QAgent(std::vector<State> states, std::vector<Action> actions) :
-                            learning_rate{0.3},
+                            learning_rate{0.03},
                             discount_rate{0.9},
                             exploration_rate{0.001},
                             Agent(actions)
 {
     SetType("Q-Learning");
     // Construct Q-Matrix
-    double default_value{1.0f};
+    double default_value{-1.0f};
     Q.resize(states.size()); // Set height 
     for(unsigned int idx{0}; idx < states.size(); idx++) // Set Width
         Q[idx].resize(actions.size(), default_value);
