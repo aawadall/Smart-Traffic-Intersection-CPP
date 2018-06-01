@@ -48,7 +48,7 @@ Action QAgent::GetNextMove(State state) {
 
 void QAgent::PrintQ() {
     unsigned int state_space{static_cast<unsigned int>(Q.size())},
-                 action_space{Q[0].size()};
+                 action_space{static_cast<unsigned int>(Q[0].size())};
         
     std::cout << "Printing Q Matrix Values " << std::endl;
     for (auto state_row : Q) {
