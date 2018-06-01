@@ -42,7 +42,7 @@ bool QAgent::Learn(State initial_state,
 Action QAgent::GetNextMove(State state) {
   std::vector<double>::iterator q_max{std::max_element(Q[state].begin(),
                                                        Q[state].end())};
-  Action best_move{std::distance(Q[state].begin(), q_max)};
+  Action best_move{static_cast<unsigned int>(std::distance(Q[state].begin(), q_max))};
   return best_move;
 }
 
