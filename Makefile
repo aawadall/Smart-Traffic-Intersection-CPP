@@ -14,3 +14,6 @@ agent.o: agent.cc agent.h
 
 q-agent.o: q-agent.cc q-agent.h
 	g++ -std=c++11 -c q-agent.cc
+	
+clean: 
+	rm -f *.o 

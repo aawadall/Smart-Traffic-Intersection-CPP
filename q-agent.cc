@@ -30,7 +30,7 @@ bool QAgent::Learn(State initial_state,
   // Find Maximum value for the new state 
   std::vector<double>::iterator q_max{std::max_element(Q[resulting_state].begin(),
                                                        Q[resulting_state].end())};
-  double max_value{std::distance(Q[resulting_state].begin(), q_max)};
+  double max_value{Q[resulting_state][std::distance(Q[resulting_state].begin(), q_max)]};
   
   Q[initial_state][applied_action] = 
         (1-learning_rate) * Q[initial_state][applied_action] +
